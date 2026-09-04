@@ -37,7 +37,7 @@ raw_html = """
             scroll-behavior: smooth;
         }
         body {
-            background-color: #080c14;
+            background-color: #090d16;
             color: #c8cdd5;
             padding: 24px 40px 60px;
             min-height: 100vh;
@@ -53,10 +53,10 @@ raw_html = """
             justify-content: space-between;
             align-items: center;
             background: #0e1630;
-            border: 1px solid rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(129, 140, 248, 0.15);
             border-radius: 14px;
             padding: 12px 24px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.5);
         }
         .nav-logo-img {
@@ -66,7 +66,7 @@ raw_html = """
         }
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 16px;
         }
         .nav-links a {
             color: #7e89ac;
@@ -74,48 +74,47 @@ raw_html = """
             font-size: 13px;
             font-weight: 700;
             transition: all 0.2s ease;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
         .nav-links a:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 30px 20px 24px;
-            background: radial-gradient(circle at top, rgba(255, 0, 0, 0.08) 0%, transparent 70%);
-        }
-        .hero h1 {
-            font-size: 36px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-        .hero p {
-            font-size: 14px;
-            color: #7e89ac;
-            max-width: 650px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
+            background: rgba(108, 114, 255, 0.15);
+            border-color: rgba(108, 114, 255, 0.4);
         }
         
-        /* Status Bar High-Tech 3 Kolom */
+        /* Status Bar High-Tech 3 Kolom dengan Glow Scanline */
         .status-panel {
             display: grid;
             grid-template-columns: 1fr 1.4fr 1.3fr;
             gap: 20px;
             align-items: center;
             background: #0e1630;
-            border: 1px solid rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(129, 140, 248, 0.15);
             border-radius: 12px;
             padding: 16px 24px;
-            margin-bottom: 36px;
+            margin-bottom: 30px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
+        .status-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6c72ff, #10b981, transparent);
+            animation: scanline 4s linear infinite;
+        }
+        @keyframes scanline {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         .status-item {
             display: flex;
             flex-direction: column;
@@ -152,9 +151,9 @@ raw_html = """
             animation: pulse-green 2s infinite;
         }
         @keyframes pulse-green {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }}
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }}
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }}
         }
         .partner-badge {
             display: inline-flex;
@@ -168,23 +167,28 @@ raw_html = """
             font-weight: 700;
             color: #ffffff;
             width: fit-content;
+            transition: all 0.2s ease;
+        }
+        .partner-badge:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(129, 140, 248, 0.4);
         }
         .logos-wrap {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         .security-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 0, 0, 0.08);
-            border: 1px solid rgba(255, 0, 0, 0.25);
+            background: rgba(108, 114, 255, 0.08);
+            border: 1px solid rgba(108, 114, 255, 0.25);
             padding: 5px 14px;
             border-radius: 8px;
             font-size: 12px;
             font-weight: 700;
-            color: #ff6b6b;
+            color: #818cf8;
             width: fit-content;
         }
 
@@ -193,18 +197,18 @@ raw_html = """
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         .card {
             background: #0e1630;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(129, 140, 248, 0.12);
             border-radius: 14px;
             padding: 26px;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
         }
         .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255, 0, 0, 0.4);
+            transform: translateY(-2px);
+            border-color: rgba(129, 140, 248, 0.4);
         }
         .card-icon {
             font-size: 26px;
@@ -225,14 +229,14 @@ raw_html = """
         /* Document Section */
         .section-box {
             background: #0e1630;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(129, 140, 248, 0.15);
             border-radius: 14px;
-            padding: 36px;
-            margin-bottom: 30px;
+            padding: 34px;
+            margin-bottom: 24px;
             line-height: 1.7;
         }
         .section-box h2 {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 6px;
@@ -247,7 +251,7 @@ raw_html = """
         .section-box h3 {
             font-size: 14px;
             font-weight: 700;
-            color: #ff6b6b;
+            color: #818cf8;
             margin-top: 20px;
             margin-bottom: 8px;
         }
@@ -261,13 +265,16 @@ raw_html = """
             margin-bottom: 14px;
         }
         .section-box a {
-            color: #ff6b6b;
+            color: #818cf8;
             text-decoration: none;
             font-weight: 600;
         }
+        .section-box a:hover {
+            text-decoration: underline;
+        }
         .callout-box {
-            background: rgba(255, 0, 0, 0.06);
-            border: 1px solid rgba(255, 0, 0, 0.25);
+            background: rgba(108, 114, 255, 0.08);
+            border: 1px solid rgba(108, 114, 255, 0.25);
             padding: 16px 20px;
             border-radius: 10px;
             margin-top: 18px;
@@ -277,7 +284,7 @@ raw_html = """
 
         /* Footer */
         .footer {
-            margin-top: 40px;
+            margin-top: 36px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
@@ -313,15 +320,7 @@ raw_html = """
             </div>
         </div>
 
-        <!-- Hero Header -->
-        <div class="hero">
-            <h1>YouTube Studio Automation Platform</h1>
-            <p>
-                Infrastruktur otomasi cerdas untuk manajemen jadwal konten, pemrosesan video berkecepatan tinggi, dan integrasi resmi Google YouTube Data API v3.
-            </p>
-        </div>
-
-        <!-- Status Panel 3 Kolom -->
+        <!-- Status Panel 3 Kolom High-Tech -->
         <div class="status-panel">
             <div class="status-item">
                 <span class="status-label">LIVE SYSTEM UPTIME</span>
@@ -351,10 +350,10 @@ raw_html = """
             </div>
             
             <div class="status-item">
-                <span class="status-label">DATA PRIVACY PROTOCOL</span>
+                <span class="status-label">DATA SECURITY STANDARD</span>
                 <span class="security-badge">
                     <span>🔒</span>
-                    <span>Zero-Knowledge OAuth Security</span>
+                    <span>AES-256 Bit OAuth Encryption</span>
                 </span>
             </div>
         </div>
@@ -376,10 +375,10 @@ raw_html = """
                 </div>
             </div>
             <div class="card">
-                <div class="card-icon">📅</div>
-                <div class="card-title">Automated Scheduling</div>
+                <div class="card-icon">📊</div>
+                <div class="card-title">Audit & Monitoring Realtime</div>
                 <div class="card-desc">
-                    Penjadwalan otomatis berbasis slot waktu produktif kreator dan sinkronisasi kuota API Google harian yang efisien.
+                    Proteksi kuota API Google harian, monitoring kesehatan channel otomatis, dan pencegahan error duplikasi konten secara cerdas.
                 </div>
             </div>
         </div>
@@ -447,7 +446,7 @@ raw_html = """
         <!-- Footer -->
         <div class="footer">
             <div>© 2026 <strong>PINTAR TUBE</strong>. Powered by PINTAR MEDIA.</div>
-            <div>Kontak Pengembang: <span style="color:#ff6b6b; font-weight:700;">pintarkantor@gmail.com</span></div>
+            <div>Kontak Pengembang: <span style="color:#818cf8; font-weight:700;">pintarkantor@gmail.com</span></div>
         </div>
     </div>
 
